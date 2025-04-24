@@ -1,20 +1,18 @@
 const express = require('express');
 
 const contactsRouter = express.Router();
-const {validateBody} = require('../middlewares')
-const {schema} = require('../shemas/contactShemas')
-const ctrl = require('../controllers/contactsControllers')
+const { validateBody } = require('../middlewares');
+const { schema } = require('../shemas/contactShemas');
+const ctrl = require('../controllers/contactsControllers');
 
+contactsRouter.get('/', ctrl.getAllContacts);
 
+contactsRouter.get('/:id', ctrl.getOneContact);
 
-contactsRouter.get('/' ,ctrl.getAllContacts)
+contactsRouter.post('/', ctrl.createContact);
 
-contactsRouter.get('/:id' ,ctrl.getOneContact)
+contactsRouter.put('/:id', validateBody(schema), ctrl.updateContact);
 
-contactsRouter.post('/' ,ctrl.createContact)
+contactsRouter.delete('/:id', ctrl.deleteContact);
 
-contactsRouter.put('/:id' ,validateBody(schema) ,ctrl.updateContact)
-
-contactsRouter.delete('/:id' ,ctrl.deleteContact)
-
-module.exports = contactsRouter
+module.exports = contactsRouter;

@@ -1,17 +1,17 @@
 const messageList = {
-    400: "Bad Request",
-    401: "Unauthorized",
-    403: "Forbidden",
-    404: "Not Found",
-    409: "Conflict",
-}
+  400: 'Bad Request',
+  401: 'Unauthorized',
+  403: 'Forbidden',
+  404: 'Not Found',
+  409: 'Conflict',
+};
 
-const HttpError = (status ,message = messageList[status] ) => {
-    const error = new Error(message)
-    error.status = status;
-    return status 
-}
+const HttpError = (status, message = messageList[status]) => {
+  const error = new Error(message);
+  error.status = status;
+  return status;
+};
 
-module.exports = { 
-    HttpError
-}
+module.exports = {
+  HttpError,
+};
