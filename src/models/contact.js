@@ -33,14 +33,18 @@ const contactSchema = new Schema(
   },
 );
 
-// const addSchema = Joi.object({
-//   name: Joi.string().required(),
-//   email: Joi.string().email().required(),
-//   phone: Joi.string()
-//     .pattern(/^[0-9]+$/)
-//     .required(),
-//   favorite: Joi.boolean(),
-// });
+const addSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().email().required(),
+  phone: Joi.string()
+    .pattern(/^[0-9]+$/)
+    .required(),
+  favorite: Joi.boolean(),
+});
+
+const updateFavoiriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
 
 contactSchema.post('save', (error, data, next) => {
   HttpError(400, error.message);
@@ -49,4 +53,12 @@ contactSchema.post('save', (error, data, next) => {
 
 const Contact = model('contact', contactSchema);
 
-module.exports = Contact;
+const shemas = {
+  addSchema,
+  updateFavoiriteSchema,
+};
+
+module.exports = {
+  Contact,
+  shemas,
+};
