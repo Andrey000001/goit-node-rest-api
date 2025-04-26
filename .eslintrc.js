@@ -9,12 +9,9 @@ module.exports = {
     ecmaVersion: 2021,
   },
   rules: {
-    'no-console': 'error',
     eqeqeq: ['error', 'always'],
     camelcase: 'error',
     indent: ['error', 2],
     semi: ['error', 'always'],
-    indent: 'off',
-    semi: 'off',
   },
 };

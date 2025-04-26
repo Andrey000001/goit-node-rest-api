@@ -1,13 +1,13 @@
 const express = require('express');
-
+const addSchema = require('../models/contact');
 const contactsRouter = express.Router();
 const { validateBody } = require('../middlewares');
-const { schema } = require('../shemas/contactShemas');
+
 const ctrl = require('../controllers/contactsControllers');
 
-contactsRouter.get('/', ctrl.getAllContacts);
+// contactsRouter.get('/', ctrl.getAllContacts);
 
-// contactsRouter.get('/:id', ctrl.getOneContact);
+contactsRouter.get('/:id', ctrl.getOneContact);
 
 contactsRouter.post('/', ctrl.createContact);
 
