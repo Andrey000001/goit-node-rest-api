@@ -37,8 +37,6 @@ const userSchema = new Schema(
   },
 );
 
-userSchema.post('save', handleMoongooseError);
-
 const registerSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().pattern(emailRegex).required(),
@@ -54,6 +52,8 @@ const schemas = {
   registerSchema,
   loginSchema,
 };
+userSchema.post('save', handleMoongooseError);
+
 const User = model('user', userSchema);
 
 module.exports = {
