@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="avatars"></ul>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const avatarContainer = document.getElementById('avatars');
+      const baseUrl = 'http://localhost:3000';
+      const productRequest = axios.get(`${baseUrl}/api/avatars`);
+      productRequest.then(({ data }) => {
+        const productElement = data
+          .map((avatar) => {
+            console.log(avatar);
+
+            const markup = `
+            <li>
+                <img src="${baseUrl}/${avatar.cover}"/></li>
+        `;
+            return markup;
+          })
+          .join('');
+        avatarContainer.innerHTML = productElement;
+      });
+    </script>
+  </body>
+</html>
